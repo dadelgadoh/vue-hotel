@@ -16,7 +16,7 @@ export default function useHotels() {
     };
 
     const getHotel = async (id) => {
-        const response = await axios.get("hotels" + id);
+        const response = await axios.get("hotels/" + id);
         hotel.value = response.data.data;
     };
 

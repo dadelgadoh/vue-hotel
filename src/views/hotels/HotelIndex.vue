@@ -3,7 +3,7 @@
 import useHotels from '../../composables/hotels';
 import { onMounted } from 'vue';
 
-const { hotels, getHotels } = useHotels();
+const { hotels, getHotels, destroyHotel } = useHotels();
 
 onMounted(() => getHotels());
 </script>
@@ -42,7 +42,7 @@ onMounted(() => getHotels());
                     <tr v-for="hotel in hotels" :key="hotel.id"
                         class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                         <td class="px-6 py-4">
-                            {{ hotel.hotelName }}
+                            {{ hotel.name }}
                         </td>
                         <td class="px-6 py-4">
                             {{ hotel.nit }}
@@ -56,8 +56,12 @@ onMounted(() => getHotels());
                         <td class="px-6 py-4">
                             {{ hotel.no_rooms }}
                         </td>
-                        <td class="px-6 py-4">
-                            edit/delete
+                        <td class="px-6 py-4 space-x-2">
+
+                            <RouterLink :to="{ name: 'HotelEdit', params: { id: hotel.id } }"
+                                class="px-4 py-2 bg-indigo-500 hover:bg-indigo-700 text-white rounded">Editar</RouterLink>
+                            <button @click="destroyHotel(hotel.id)"
+                                class="px-4 py-2 bg-indigo-500 hover:bg-indigo-700 text-white rounded">Borrar</button>
                         </td>
                     </tr>
 
