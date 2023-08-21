@@ -2,13 +2,13 @@
 import useRooms from '../../composables/rooms';
 import { onMounted } from 'vue';
 
-const { rooms, getRooms, destroyRoom, loadHotelNames,hotelNames, getRoomTypeName, getAccommodationName } = useRooms();
+const { rooms, getRooms, destroyRoom, hotelNames, getRoomTypeName, getAccommodationName } = useRooms();
 
-// onMounted(() => getRooms());
-onMounted(() => {
-    getRooms();
-    loadHotelNames();
-    });
+onMounted(() => getRooms());
+// onMounted(() => {
+//     getRooms();
+//     loadHotelNames();
+//     });
 
 </script>
 

@@ -56,6 +56,7 @@ export default function useRooms() {
         await axios.delete("hotel-rooms/" + id);
         await getRooms();
     }
+    
     const roomTypeNames = ['Estándar', 'Junior', 'Suite', 'No parametrizado'];
     const accommodationNames = ['Sencilla', 'Doble', 'Triple', 'Cuádruple', 'No parametrizado'];
     const getRoomTypeName = (roomTypeId) => roomTypeNames[roomTypeId - 1] || 'No parametrizado';
@@ -77,7 +78,7 @@ export default function useRooms() {
         destroyRoom,
         errors,
         hotelNames,
-        loadHotelNames,
+        
         getRoomTypeName,
         getAccommodationName
     }
