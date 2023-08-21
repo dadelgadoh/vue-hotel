@@ -27,8 +27,6 @@ onMounted(() => getHotels());
                             </svg>
                             <span> &nbsp;Nuevo Hotel</span>
                         </RouterLink>
-
-                        
                     </div>
                 </div>
                 <div class="overflow-x-auto">
