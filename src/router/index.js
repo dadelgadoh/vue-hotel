@@ -24,6 +24,22 @@ const router = createRouter({
       name: 'HotelEdit',
       component: () => import('../views/hotels/HotelEdit.vue'),
       props: true
+    },
+    {
+      path: '/rooms',
+      name: 'RoomIndex',
+      component: () => import('../views/rooms/RoomIndex.vue')
+    },
+    {
+      path: '/rooms/create',
+      name: 'RoomCreate',
+      component: () => import('../views/rooms/RoomCreate.vue')
+    },
+    {
+      path: '/rooms/:id/edit',
+      name: 'RoomEdit',
+      component: () => import('../views/rooms/RoomEdit.vue'),
+      props: true
     }
   ]
 })
