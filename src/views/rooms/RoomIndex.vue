@@ -2,9 +2,14 @@
 import useRooms from '../../composables/rooms';
 import { onMounted } from 'vue';
 
-const { rooms, getRooms, destroyRoom } = useRooms();
+const { rooms, getRooms, destroyRoom, loadHotelNames,hotelNames, getRoomTypeName, getAccommodationName } = useRooms();
 
-onMounted(() => getRooms());
+// onMounted(() => getRooms());
+onMounted(() => {
+    getRooms();
+    loadHotelNames();
+    });
+
 </script>
 
 <template>
@@ -44,10 +49,14 @@ onMounted(() => getRooms());
                         <tbody>
                             <tr v-for="room in rooms" :key="room.id" class="border-b dark:border-gray-700">
                                 <th scope="row"
-                                    class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{
-                                        room.hotel_id }}</th>
-                                <td class="px-4 py-3">{{ room.room_type_id }}</td>
-                                <td class="px-4 py-3"> {{ room.accommodation_id }}</td>
+                                    class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    {{ hotelNames[room.id] }}</th>
+                                <td class="px-4 py-3">
+                                    {{ getRoomTypeName(room.room_type_id) }}
+                                </td>
+                                <td class="px-4 py-3">
+                                    {{ getAccommodationName(room.accommodation_id) }}
+                                </td>
                                 <td class="px-4 py-3">{{ room.quantity }}</td>
                                 <td class="px-4 py-3 flex items-center space-x-2">
                                     <RouterLink :to="{ name: 'RoomEdit', params: { id: room.id } }"
