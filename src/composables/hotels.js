@@ -2,7 +2,9 @@ import { ref } from "vue";
 import axios from 'axios';
 import { useRouter } from "vue-router";
 
-axios.defaults.baseURL = "http://127.0.0.1:8000/api/v1/"
+// axios.defaults.baseURL = "http://127.0.0.1:8000/api/v1/"
+axios.defaults.baseURL = "http://laravel_app/api/v1/"
+// axios.defaults.baseURL = "http://172.19.0.2/api/v1/"
 
 export default function useHotels() {
     const hotels = ref([]);
