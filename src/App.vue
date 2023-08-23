@@ -32,7 +32,7 @@ import { RouterLink, RouterView } from 'vue-router'
               </div>
             </router-link>
             <!-- Mobile menu button -->
-            <div @click="showMenu = !showMenu" class="flex md:hidden">
+            <div  class="flex md:hidden">
               <button type="button" class="
                 text-gray-800
                 hover:text-gray-400
@@ -49,17 +49,7 @@ import { RouterLink, RouterView } from 'vue-router'
 
 
           <!-- Mobile Menu open: "block", Menu closed: "hidden" -->
-          <ul :class="showMenu ? 'flex' : 'hidden'" class="
-            flex-col
-            mt-8
-            space-y-4
-            md:flex
-            md:space-y-0
-            md:flex-row
-            md:items-center
-            md:space-x-10
-            md:mt-0
-          ">
+          <ul>
             <RouterLink class="
             px-4
             py-2
@@ -79,6 +69,15 @@ import { RouterLink, RouterView } from 'vue-router'
             rounded
             text-white
           " to="/hotels">Hoteles</RouterLink>
+            <RouterLink class="
+            px-4
+            py-2
+            mr-4 
+            bg-cyan-600 
+            hover:bg-cyan-800 
+            rounded
+            text-white
+          " to="/rooms">Habitaciones</RouterLink>
 
           </ul>
         </nav>
