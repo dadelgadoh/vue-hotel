@@ -11,19 +11,27 @@ COPY package*.json ./
 RUN npm install
 
 # Copia todos los archivos del proyecto al directorio de trabajo
-COPY . .
+# COPY . .
+COPY ./ .
 
 # Compila el proyecto Vue.js
 RUN npm run build
 
-# Stage de producción
-FROM nginx:latest
+# # Stage de producción
+# FROM nginx:latest
 
-# Copia la compilación estática del proyecto Vue.js del stage de construcción
-COPY --from=build-stage /app/dist /usr/share/nginx/html
+# # Copia la compilación estática del proyecto Vue.js del stage de construcción
+# COPY --from=build-stage /app/dist /usr/share/nginx/html
 
-# Expone el puerto en el que se ejecuta el servidor Nginx
-EXPOSE 80
+# # Expone el puerto en el que se ejecuta el servidor Nginx
+# EXPOSE 80
 
-# Comando para iniciar el servidor Nginx
-CMD ["nginx", "-g", "daemon off;"]
+# # Comando para iniciar el servidor Nginx
+# CMD ["nginx", "-g", "daemon off;"]
+
+
+FROM nginx as production-stage
+EXPOSE 3000
+RUN mkdir /app
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=build-stage /app/dist /app
